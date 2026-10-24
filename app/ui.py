@@ -254,7 +254,7 @@ def gauge(rating, interval=None, test_mae=8.3):
         iv = f"""
       <div class="iv" style="flex:1;min-width:220px">
         <div class="lbl">{interval['level']:.0%} prediction interval</div>
-        <div class="big" style="font-size:1.7rem"><span id="lo">{olo:.0f}</span>–<span id="hi">{ohi:.0f}</span>%</div>
+        <div class="big" style="font-size:1.7rem"><span id="lo">{olo:.0f}</span>–<span id="hi">{ohi:.0f}</span><span style="font-size:1rem;opacity:.7"> /100</span></div>
         <div class="bar"><div id="fill" class="fill" style="left:{olo}%;width:{max(ohi - olo, 0)}%"></div>
              <div id="mark" class="mark" style="left:calc({old}% - 2px)"></div></div>
         <div class="ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
@@ -279,15 +279,15 @@ def gauge(rating, interval=None, test_mae=8.3):
             style="transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1)"/>
         </svg>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div class="big"><span id="num">{old:.1f}</span><span style="font-size:1.2rem">%</span></div>
-          <div class="lbl">predicted</div>
+          <div class="big"><span id="num">{old:.1f}</span></div>
+          <div class="lbl">out of 100</div>
         </div>
         {sparkle}
       </div>
       <div style="flex:none">
         <div class="lbl">Steam would show</div>
         <div class="pill" style="color:{col};border:1px solid {col}66;background:{col}1A">{lab}</div>
-        <div class="lbl hide-narrow" style="margin-top:14px;text-transform:none;letter-spacing:0">positive recommendation ratio</div>
+        <div class="lbl hide-narrow" style="margin-top:14px;text-transform:none;letter-spacing:0">score = share of positive Steam reviews</div>
       </div>
       {iv}
     </div>

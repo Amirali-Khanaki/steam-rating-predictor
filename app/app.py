@@ -1,4 +1,4 @@
-﻿"""
+"""
 app.py  --  Steam Game Rating Predictor (first version of the program, Streamlit web page)
 
 Run from the project folder:
@@ -105,7 +105,7 @@ with st.sidebar:
 
     st.header("🎯 Target rating")
     use_target = st.checkbox("Suggest the fewest changes to reach a target")
-    target = st.slider("Target (%)", 50, 100, 85, disabled=not use_target)
+    target = st.slider("Target score (out of 100)", 50, 100, 85, disabled=not use_target)
 
 game = {"name": name, "release_date": date.isoformat(), "is_free": free,
         "price_usd": None if free else price, "required_age": age,
@@ -133,7 +133,7 @@ if r["length"]:
     new = min(max(r["rating"] + g["adjustment"], 0), 100)
     kind = "pos" if g["adjustment"] >= 0 else "neg"
     cards.append(("length", "⏱️ Planned length",
-                  ui.chip(f"{new:.1f} %", "big step") + ui.chip(f"{g['adjustment']:+.1f} pts", kind) +
+                  ui.chip(f"{new:.1f}/100", "big step") + ui.chip(f"{g['adjustment']:+.1f} pts", kind) +
                   f'<p class="muted">{g["hours"]:.0f} h main story = {g["ratio"]:.1f}× the usual {html.escape(g["genre"])} '
                   f'game ({g["genre_median"]:.1f} h). Longer than usual for the genre goes with slightly higher ratings: '
                   f'about {g["slope"]:+.1f} points per doubling (HowLongToBeat data, 3,637 games).</p>'))
@@ -143,7 +143,7 @@ if r["scenarios"]:
     detail = "".join(f'<p class="muted">• {html.escape(s["description"])}: 95% CI {s["ci95"][0]:+.1f} to '
                      f'{s["ci95"][1]:+.1f}, {s["n_games"]} past games</p>' for s in r["scenarios"])
     cards.append(("scenarios", "🎲 What-if scenarios",
-                  ui.chip(f"{r['scenario_rating']:.1f} %", "big step") +
+                  ui.chip(f"{r['scenario_rating']:.1f}/100", "big step") +
                   ui.chip(f"{r['scenario_rating'] - r['rating']:+.1f} pts", "neg" if r['scenario_rating'] < r['rating'] else "pos")
                   + "<br>" + chips + detail + f'<p class="muted">ℹ️ {html.escape(SALES_NOTE)}</p>'))
 t = r["target"]
@@ -155,11 +155,11 @@ if t:
     else:
         inner = "" if t["reached"] else '<p class="muted">⚠️ Not reachable with up to 6 changes; best found:</p>'
         for p in t["plans"]:
-            inner += ('<div class="plan">' + ui.chip(f"{len(p['changes'])} change(s) → {p['rating']:.1f} %", "big pos") +
+            inner += ('<div class="plan">' + ui.chip(f"{len(p['changes'])} change(s) → {p['rating']:.1f}/100", "big pos") +
                       "<br>" + "".join(ui.chip(c, "step") for c in p["changes"]) + "</div>")
         inner += ('<p class="muted">Patterns from past games, not a guarantee. Changes considered: price, '
                   'multiplayer / co-op modes, in-app purchases, Early Access, and gameplay tags that fit your genres.</p>')
-    cards.append(("target", f"🎯 How to reach {t['target']:.0f} %", inner))
+    cards.append(("target", f"🎯 How to reach {t['target']:.0f}/100", inner))
 ui.cards("results", cards)
 
 if r["notes"]:
