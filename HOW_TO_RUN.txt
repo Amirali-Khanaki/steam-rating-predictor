@@ -1,0 +1,18 @@
+Steam Rating Predictor - how to run on another Windows computer
+==============================================================
+
+1. Install Python once from https://www.python.org/downloads/
+   During installation tick "Add python.exe to PATH".
+2. Unzip this folder anywhere (for example on the Desktop).
+3. Double-click run_app.bat
+   - The first time it downloads the needed libraries (a few minutes, needs internet).
+   - Then the site opens in the browser at http://localhost:8501
+4. Keep the black window open while using the site. Close it to stop.
+
+Light / dark theme: top-right menu (three dots) -> System / Light / Dark.
+
+Contents: app\ (the web page), src\ (prediction code), models\ (trained models),
+.streamlit\ (settings), requirements.txt (libraries), run_app.bat (starter).
+The large training data is NOT needed to run the site.
+
+Khatam University - Machine Learning course project - Amirali Khanaki

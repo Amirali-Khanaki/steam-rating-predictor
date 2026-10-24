@@ -1,0 +1,7 @@
+# Libraries needed to RUN the app (python -m pip install -r requirements.txt)
+# Tested with Python 3.14, streamlit 1.66.1, xgboost 3.4.1, pandas 3.0.6, numpy 2.5.4, scikit-learn 1.9.1.
+streamlit>=1.66
+xgboost>=3.0
+pandas>=2.2
+numpy>=2.0
+scikit-learn>=1.5

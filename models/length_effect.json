@@ -1,0 +1,92 @@
+{
+ "slope_per_doubling": 0.859,
+ "slope_ci95": [
+  0.617,
+  1.1
+ ],
+ "ratio_clip": [
+  0.25,
+  8.0
+ ],
+ "n_games": 3637,
+ "bins": [
+  0.5,
+  0.8,
+  1.25,
+  2.0
+ ],
+ "labels": [
+  "< 0.5x genre median",
+  "0.5-0.8x",
+  "0.8-1.25x (typical)",
+  "1.25-2x",
+  "> 2x"
+ ],
+ "effects": {
+  "< 0.5x genre median": {
+   "effect": -1.12,
+   "ci95": [
+    -1.89,
+    -0.41
+   ],
+   "n": 946
+  },
+  "0.5-0.8x": {
+   "effect": -0.61,
+   "ci95": [
+    -1.51,
+    0.27
+   ],
+   "n": 533
+  },
+  "0.8-1.25x (typical)": {
+   "effect": -1.04,
+   "ci95": [
+    -1.94,
+    -0.17
+   ],
+   "n": 686
+  },
+  "1.25-2x": {
+   "effect": 0.03,
+   "ci95": [
+    -0.83,
+    0.88
+   ],
+   "n": 558
+  },
+  "> 2x": {
+   "effect": 2.28,
+   "ci95": [
+    1.61,
+    2.93
+   ],
+   "n": 914
+  }
+ },
+ "genre_median_hours": {
+  "Action": 4.9,
+  "Adventure": 4.35,
+  "Aventura": 5.08,
+  "Casual": 4.16,
+  "Free To Play": 1.03,
+  "Gore": 1.41,
+  "Indie": 2.16,
+  "Massively Multiplayer": 44.65,
+  "Nudity": 4.3,
+  "Other": 2.96,
+  "RPG": 16.25,
+  "Racing": 4.96,
+  "Sexual Content": 4.0,
+  "Simulation": 5.08,
+  "Sports": 3.52,
+  "Strategy": 9.12,
+  "Web Publishing": 20.42
+ },
+ "generic_genres": [
+  "Casual",
+  "Early Access",
+  "Free To Play",
+  "Indie"
+ ]
+}

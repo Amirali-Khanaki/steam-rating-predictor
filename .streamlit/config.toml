@@ -1,0 +1,24 @@
+[server]
+# do not ask for an email on first run and do not wait for input
+headless = true
+
+[browser]
+# do not send usage statistics to Streamlit
+gatherUsageStats = false
+
+# Light and dark themes: switch in the top-right menu (three dots -> Settings -> theme).
+[theme]
+primaryColor = "#8B5CF6"
+font = "sans serif"
+
+[theme.light]
+primaryColor = "#7C3AED"
+backgroundColor = "#F6F7FB"
+secondaryBackgroundColor = "#ECEEF6"
+textColor = "#1B1F2E"
+
+[theme.dark]
+primaryColor = "#8B5CF6"
+backgroundColor = "#0A0D18"
+secondaryBackgroundColor = "#141A2E"
+textColor = "#E7EAF3"

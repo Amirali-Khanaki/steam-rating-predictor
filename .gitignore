@@ -1,0 +1,28 @@
+# Allow-list: only what is needed to RUN the site goes to GitHub.
+# Everything else (data, reports, docs, proposal, books, chats...) stays on this computer.
+/*
+!/.gitignore
+!/README.md
+!/HOW_TO_RUN.txt
+!/requirements.txt
+!/run_app.bat
+
+!/app/
+/app/*
+!/app/app.py
+!/app/ui.py
+
+!/src/
+/src/*
+!/src/predict.py
+!/src/clean.py
+!/src/features.py
+
+!/models/
+
+!/.streamlit/
+/.streamlit/*
+!/.streamlit/config.toml
+
+__pycache__/
+*.pyc

@@ -1,0 +1,38 @@
+{
+ "technical": {
+  "description": "severe technical problems at launch (bugs, crashes, performance, servers)",
+  "effect": -21.17,
+  "ci95": [
+   -28.22,
+   -14.56
+  ],
+  "n_games": 25
+ },
+ "monetization": {
+  "description": "aggressive / criticized microtransactions",
+  "effect": -10.38,
+  "ci95": [
+   -19.57,
+   -2.14
+  ],
+  "n_games": 17
+ },
+ "controversy": {
+  "description": "other public controversy (politics, developer statements, censorship, translation)",
+  "effect": 3.38,
+  "ci95": [
+   -0.11,
+   6.98
+  ],
+  "n_games": 19
+ },
+ "woke_backlash": {
+  "description": "player backlash calling the game 'woke' / DEI (characters, representation)",
+  "effect": -10.03,
+  "ci95": [
+   -16.36,
+   -3.87
+  ],
+  "n_games": 22
+ }
+}
