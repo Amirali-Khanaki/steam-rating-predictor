@@ -185,11 +185,25 @@ def _base(p=VARS):
  @keyframes float{{0%,100%{{transform:translate(0,0)}}50%{{transform:translate(18px,-14px)}}}}
  @keyframes spark{{0%{{opacity:0;transform:scale(.2) rotate(0)}}40%{{opacity:1}}100%{{opacity:0;transform:scale(1.4) rotate(90deg)}}}}
  @media (prefers-reduced-motion: reduce){{*{{animation:none!important;transition:none!important}}}}
+ /* phones / narrow screens: ring + label on the first row, the interval gets its own full-width row */
  @media (max-width:640px){{
-   .wrap{{gap:12px;padding:14px}} .ring{{transform:scale(.72);margin:-24px -24px}}
-   .big{{font-size:1.6rem}} .iv .big{{font-size:1.2rem!important}} .hide-narrow{{display:none}} .iv{{min-width:0!important}}
-   .lbl{{font-size:.68rem}} }}
+   .wrap{{flex-wrap:wrap;gap:14px 18px;padding:16px}}
+   .ring{{width:128px!important;height:128px!important}} .ring .big{{font-size:1.55rem}}
+   .iv{{flex:1 1 100%!important;min-width:0!important}} .hide-narrow{{display:none}} }}
 </style>
+<script>
+ // the iframe gets exactly the height of its card (no empty gap, nothing cut off), also after resizing
+ function __fit(){{ try {{ const f = window.frameElement, w = document.querySelector('.wrap'); if (!f || !w) return;
+   const h = Math.ceil(w.getBoundingClientRect().height) + 6; if (Math.abs((parseInt(f.style.height)||0) - h) > 1) {{
+   f.style.height = h + 'px'; f.setAttribute('height', h);
+   // Streamlit's wrappers around the iframe keep the old fixed height: resize them too
+   let el = f.parentElement;
+   for (let i = 0; el && i < 3; i++, el = el.parentElement) {{
+     el.style.height = h + 'px'; if (el.getAttribute('data-testid') === 'stElementContainer') break; }} }} }} catch(e) {{}} }}
+ addEventListener('load', __fit); addEventListener('resize', __fit);
+ document.addEventListener('DOMContentLoaded', () => {{ __fit(); const w = document.querySelector('.wrap');
+   if (w && window.ResizeObserver) new ResizeObserver(__fit).observe(w); }});
+</script>
 <script>
  // follow the page theme (set on the parent page by fix_dropdowns / theme watcher)
  function __syncTheme(){{ try {{ const t = window.parent.document.documentElement.dataset.theme || 'dark';
@@ -255,7 +269,7 @@ def gauge(rating, interval=None, test_mae=8.3):
       <div class="dot" style="width:220px;height:220px;right:-60px;top:-80px"></div>
       <div class="dot" style="width:160px;height:160px;left:35%;bottom:-90px;background:radial-gradient(circle,#22D3EE 0,transparent 70%);animation-delay:-4s"></div>
       <div class="ring" style="position:relative;width:170px;height:170px;flex:none">
-        <svg width="170" height="170" viewBox="0 0 170 170">
+        <svg width="100%" height="100%" viewBox="0 0 170 170">
           <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient>
             <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
